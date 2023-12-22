@@ -24,7 +24,7 @@ from config import BANNED_USERS
 from strings import get_string
 
 
-@app.on_message(filters.command(["mstart"]) & filters.private & ~BANNED_USERS)
+@app.on_message(filters.command([""]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
     await add_served_user(message.from_user.id)
@@ -33,7 +33,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             return await message.reply_video(
-                       video="https://graph.org/file/8fe2b8564471a468f4d19.mp4",
+                       video="",
                        caption=_["help_1"].format(config.SUPPORT_CHAT), reply_markup=keyboard
             )
         if name[0:3] == "sud":
@@ -95,7 +95,7 @@ async def start_pm(client, message: Message, _):
             )
 
 
-@app.on_message(filters.command(["mstart"]) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command([""]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
     out = start_panel(_)
